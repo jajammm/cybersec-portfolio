@@ -10,7 +10,7 @@ socials:
   hackthebox: "https://app.hackthebox.com/profile/YOUR-ID"
 ---
 
-I'm looking for a junior penetration tester role. I recently finished a Red Team bootcamp. Its final project was a full black-box web application assessment of an intentionally vulnerable e-commerce app in an authorized lab. That assessment produced 10 findings: 4 Critical, 4 High and 2 Moderate. The case studies on this site walk through it.
+I'm looking for a junior penetration tester role. I recently finished a Red Team bootcamp. Its final project was a full black-box web application assessment of an intentionally vulnerable e-commerce app in an authorized lab. That assessment produced 10 findings: 4 Critical, 4 High and 2 Moderate. The report on this site walks through all of them.
 
 ## What I do
 
