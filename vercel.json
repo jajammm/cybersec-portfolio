@@ -1,0 +1,4 @@
+{
+  "buildCommand": "bun run check:sensitive && bun run build",
+  "outputDirectory": "dist"
+}

@@ -1,5 +1,5 @@
 {
-  "name": "astro-erudite",
+  "name": "pentest-portfolio",
   "type": "module",
   "version": "2.0.1",
   "engines": {
@@ -13,7 +13,8 @@
     "format": "biome format --write .",
     "format:check": "biome format .",
     "test": "bun test scripts",
-    "check:sensitive": "bun scripts/check-sensitive.mjs"
+    "check:sensitive": "bun scripts/check-sensitive.mjs",
+    "check:links": "bun scripts/check-links.mjs"
   },
   "dependencies": {
     "@astrojs/markdown-satteri": "^0.3.2",

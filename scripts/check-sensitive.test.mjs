@@ -1,5 +1,20 @@
 import { describe, expect, test } from "bun:test"
-import { DEFAULT_PATTERNS, findLeaks, parseDenylist } from "./check-sensitive.mjs"
+import { mkdirSync, mkdtempSync, rmSync, writeFileSync } from "node:fs"
+import { tmpdir } from "node:os"
+import { join } from "node:path"
+import { DEFAULT_PATTERNS, findLeaks, listSourceFiles, parseDenylist } from "./check-sensitive.mjs"
+
+describe("listSourceFiles", () => {
+  test("outside a git repo it walks the tree, skipping node_modules, .git and .astro", () => {
+    const root = mkdtempSync(join(tmpdir(), "scan-"))
+    for (const d of ["src", "node_modules/x", ".astro"]) mkdirSync(join(root, d), { recursive: true })
+    writeFileSync(join(root, "src/a.md"), "")
+    writeFileSync(join(root, "node_modules/x/b.js"), "")
+    writeFileSync(join(root, ".astro/c.json"), "")
+    expect(listSourceFiles(root)).toEqual(["src/a.md"])
+    rmSync(root, { recursive: true, force: true })
+  })
+})
 
 describe("findLeaks", () => {
   test("reports file and line of a denylisted string", () => {

@@ -3,7 +3,7 @@
 // never ships) plus generic defaults that also run on Vercel.
 import { execSync } from "node:child_process"
 import { existsSync, readdirSync, readFileSync, statSync } from "node:fs"
-import { join } from "node:path"
+import { join, relative } from "node:path"
 
 const PRIVATE_IPV4 = /^(10|127)\.|^192\.168\.|^172\.(1[6-9]|2\d|3[01])\.|^0\.0\.0\.0$/
 // Lookarounds skip longer dotted runs such as SVG path data.
@@ -48,11 +48,29 @@ const BINARY = /\.(png|jpe?g|gif|webp|avif|ico|woff2?|ttf|pdf)$/i
 // The scanner and its tests contain the generic patterns by necessity.
 const SELF = /^scripts\/check-sensitive(\.test)?\.mjs$/
 
-function walk(dir) {
+const SKIP_DIRS = new Set(["node_modules", ".git", ".astro", ".vercel", "dist"])
+
+function walk(dir, skip = new Set()) {
   return readdirSync(dir).flatMap((name) => {
     const p = join(dir, name)
-    return statSync(p).isDirectory() ? walk(p) : [p.replaceAll("\\", "/")]
+    if (!statSync(p).isDirectory()) return [p.replaceAll("\\", "/")]
+    return skip.has(name) ? [] : walk(p, skip)
   })
+}
+
+// Vercel builds may run without .git, so fall back to walking the tree.
+export function listSourceFiles(root = ".") {
+  try {
+    return execSync("git ls-files --cached --others --exclude-standard", {
+      cwd: root,
+      encoding: "utf8",
+      stdio: ["ignore", "pipe", "ignore"],
+    })
+      .split("\n")
+      .filter(Boolean)
+  } catch {
+    return walk(root, SKIP_DIRS).map((p) => relative(root, p).replaceAll("\\", "/"))
+  }
 }
 
 function main() {
@@ -61,9 +79,7 @@ function main() {
   if (existsSync(denyPath)) patterns.push(...parseDenylist(readFileSync(denyPath, "utf8")))
   else console.warn(`warning: ${denyPath} not found, using generic patterns only`)
 
-  const files = execSync("git ls-files --cached --others --exclude-standard", { encoding: "utf8" })
-    .split("\n")
-    .filter(Boolean)
+  const files = listSourceFiles()
   if (existsSync("dist")) files.push(...walk("dist"))
 
   const leaks = files.flatMap((file) => {

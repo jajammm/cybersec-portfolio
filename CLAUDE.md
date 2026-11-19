@@ -3,7 +3,7 @@
 Baca dulu `docs/superpowers/specs/2026-11-19-pentest-portfolio-design.md`. Itu adalah desain yang disepakati dengan pemilik di percakapan sebelumnya.
 
 ## Ringkas
-- Situs portofolio Red Team/pentester untuk melamar kerja sebagai pentester, dibangun dari template **astro-erudite** (https://github.com/jktrn/astro-erudite, Astro + Bun) kode di GitHub dan dideploy ke **Vercel** (keputusan pemilik 2026-11-19, menggantikan GitHub Pages). Bahasa situs: Inggris.
+- Situs portofolio Red Team/pentester untuk melamar kerja sebagai pentester, dibangun dari template **astro-erudite** (https://github.com/jktrn/astro-erudite, Astro + Bun), kode disimpan di GitHub dan dideploy ke **Vercel** (keputusan pemilik 2026-11-19, menggantikan GitHub Pages). Bahasa situs: Inggris.
 - Dua case study dari laporan lab bootcamp (10 temuan). Tiap case study = satu post dengan subposts: Introduction, Reconnaissance & Scanning, Exploitation, Post-Exploitation & Privilege Escalation, Reporting & Finalisasi.
 - Utamakan kualitas dokumentasi dibanding jumlah. Tiga temuan terkuat didalami dengan PoC.
 
