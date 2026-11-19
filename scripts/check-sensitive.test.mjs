@@ -2,7 +2,20 @@ import { describe, expect, test } from "bun:test"
 import { mkdirSync, mkdtempSync, rmSync, writeFileSync } from "node:fs"
 import { tmpdir } from "node:os"
 import { join } from "node:path"
-import { DEFAULT_PATTERNS, findLeaks, listSourceFiles, parseDenylist } from "./check-sensitive.mjs"
+import { ALLOW, DEFAULT_PATTERNS, findLeaks, listSourceFiles, parseDenylist } from "./check-sensitive.mjs"
+
+describe("allowlist", () => {
+  test("intentionally published target host and IP are not flagged", () => {
+    const text = `bimbycart.duckdns.org\n188.166.209.84`
+    expect(findLeaks("f.md", text, DEFAULT_PATTERNS)).toEqual([])
+    expect(ALLOW).toContain("bimbycart.duckdns.org")
+  })
+
+  test("a different duckdns host or public IP is still flagged", () => {
+    const lines = findLeaks("f.md", "evil.duckdns.org\n9.9.9.9", DEFAULT_PATTERNS).map((l) => l.line)
+    expect(lines).toEqual([1, 2])
+  })
+})
 
 describe("listSourceFiles", () => {
   test("outside a git repo it walks the tree, skipping node_modules, .git and .astro", () => {

@@ -5,6 +5,15 @@ import { execSync } from "node:child_process"
 import { existsSync, readdirSync, readFileSync, statSync } from "node:fs"
 import { join, relative } from "node:path"
 
+// Strings intentionally published (authorized lab target identity). They are
+// stripped before matching, so the generic rules still flag ANY OTHER host/IP.
+export const ALLOW = ["bimbycart.duckdns.org", "188.166.209.84"]
+
+function stripAllowed(s) {
+  for (const a of ALLOW) s = s.split(a).join("")
+  return s
+}
+
 const PRIVATE_IPV4 = /^(10|127)\.|^192\.168\.|^172\.(1[6-9]|2\d|3[01])\.|^0\.0\.0\.0$/
 // Lookarounds skip longer dotted runs such as SVG path data.
 const ipv4 = /(?<![\d.])(?:\d{1,3}\.){3}\d{1,3}(?![\d.])/g
@@ -37,9 +46,11 @@ export function findLeaks(file, text, rawPatterns) {
   const seen = new Set()
   const patterns = rawPatterns.filter((p) => !seen.has(p.source.toLowerCase()) && seen.add(p.source.toLowerCase()))
   const leaks = []
-  for (const p of patterns) if (p.test(file)) leaks.push({ file, line: 0, pattern: p.source })
+  const cleanFile = stripAllowed(file)
+  for (const p of patterns) if (p.test(cleanFile)) leaks.push({ file, line: 0, pattern: p.source })
   text.split(/\r?\n/).forEach((lineText, i) => {
-    for (const p of patterns) if (p.test(lineText)) leaks.push({ file, line: i + 1, pattern: p.source })
+    const clean = stripAllowed(lineText)
+    for (const p of patterns) if (p.test(clean)) leaks.push({ file, line: i + 1, pattern: p.source })
   })
   return leaks
 }
