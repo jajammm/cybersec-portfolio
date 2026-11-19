@@ -1,13 +1,13 @@
 ---
 name: "Muhammad Zamzam Fauzan"
-avatar: "/static/avatar.svg"
+avatar: "/static/profile.webp"
 bio: "Junior penetration tester trained in a Red Team bootcamp. I test web applications and write reports that developers can act on."
-mail: "you@example.com"
+mail: "mhmmdzamzamfauzan@gmail.com"
 socials:
-  github: "https://github.com/YOUR-USERNAME"
-  linkedin: "https://www.linkedin.com/in/YOUR-HANDLE"
-  tryhackme: "https://tryhackme.com/p/YOUR-HANDLE"
-  hackthebox: "https://app.hackthebox.com/profile/YOUR-ID"
+  github: "https://github.com/jajammm"
+  linkedin: "https://www.linkedin.com/in/m-zamzam-fauzan/"
+  tryhackme: "https://tryhackme.com/p/0xjajamm"
+  hackthebox: "https://profile.hackthebox.com/profile/01a1cf36-0c53-714a-b671-d5f02551062e"
 ---
 
 I'm looking for a junior penetration tester role. I recently finished a Red Team bootcamp. Its final project was a full black-box assessment of Dibimbing-Shop, an intentionally vulnerable e-commerce app, in an authorized Dibimbing bootcamp lab. That assessment produced 10 findings: 4 Critical, 4 High and 2 Moderate. The report on this site walks through all of them.
@@ -28,5 +28,4 @@ Burp Suite, sqlmap, Nmap, WhatWeb, Gobuster, dirb, Wireshark, curl, nslookup, wh
 
 ## Certifications
 
-- YOUR-CERTIFICATION (Issuer, Year)
-- YOUR-CERTIFICATION (Issuer, Year)
+- Certified System Analyst (BNSP, 2025)

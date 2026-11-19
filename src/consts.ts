@@ -22,12 +22,16 @@ export const NAVIGATION = [
   { href: "/authors/zamzam", label: "About" },
 ]
 
-// Placeholders: replace every YOUR-... value before going live.
+// Site URL (astro.config.ts) is still the only placeholder: set it after the Vercel project exists.
 export const SOCIALS: { href: string; label: string; icon: SvgComponent }[] = [
-  { href: "https://github.com/YOUR-USERNAME", label: "GitHub", icon: GitHub },
-  { href: "https://www.linkedin.com/in/YOUR-HANDLE", label: "LinkedIn", icon: LinkedIn },
-  { href: "https://tryhackme.com/p/YOUR-HANDLE", label: "TryHackMe", icon: TryHackMe },
-  { href: "https://app.hackthebox.com/profile/YOUR-ID", label: "Hack The Box", icon: HackTheBox },
-  { href: "mailto:you@example.com", label: "Email", icon: Email },
+  { href: "https://github.com/jajammm", label: "GitHub", icon: GitHub },
+  { href: "https://www.linkedin.com/in/m-zamzam-fauzan/", label: "LinkedIn", icon: LinkedIn },
+  { href: "https://tryhackme.com/p/0xjajamm", label: "TryHackMe", icon: TryHackMe },
+  {
+    href: "https://profile.hackthebox.com/profile/01a1cf36-0c53-714a-b671-d5f02551062e",
+    label: "Hack The Box",
+    icon: HackTheBox,
+  },
+  { href: "mailto:mhmmdzamzamfauzan@gmail.com", label: "Email", icon: Email },
   { href: "/rss.xml", label: "RSS", icon: RSS },
 ]

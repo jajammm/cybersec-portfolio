@@ -15,6 +15,11 @@ describe("allowlist", () => {
     const lines = findLeaks("f.md", "evil.duckdns.org\n9.9.9.9", DEFAULT_PATTERNS).map((l) => l.line)
     expect(lines).toEqual([1, 2])
   })
+
+  test("owner's own email passes but another gmail is still flagged", () => {
+    expect(findLeaks("f.md", "mhmmdzamzamfauzan@gmail.com", DEFAULT_PATTERNS)).toEqual([])
+    expect(findLeaks("f.md", "victim@gmail.com", DEFAULT_PATTERNS).map((l) => l.line)).toEqual([1])
+  })
 })
 
 describe("listSourceFiles", () => {

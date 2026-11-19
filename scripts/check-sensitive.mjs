@@ -7,7 +7,11 @@ import { join, relative } from "node:path"
 
 // Strings intentionally published (authorized lab target identity). They are
 // stripped before matching, so the generic rules still flag ANY OTHER host/IP.
-export const ALLOW = ["bimbycart.duckdns.org", "188.166.209.84"]
+export const ALLOW = [
+  "bimbycart.duckdns.org",
+  "188.166.209.84",
+  "mhmmdzamzamfauzan@gmail.com", // owner's own published contact email
+]
 
 function stripAllowed(s) {
   for (const a of ALLOW) s = s.split(a).join("")
