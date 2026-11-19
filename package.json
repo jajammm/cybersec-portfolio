@@ -14,7 +14,8 @@
     "format:check": "biome format .",
     "test": "bun test scripts",
     "check:sensitive": "bun scripts/check-sensitive.mjs",
-    "check:links": "bun scripts/check-links.mjs"
+    "check:links": "bun scripts/check-links.mjs",
+    "verify": "bun test scripts && bun run check:links && bun run check:sensitive"
   },
   "dependencies": {
     "@astrojs/markdown-satteri": "^0.3.2",

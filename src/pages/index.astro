@@ -1,9 +1,82 @@
 ---
+import BlogCard from "@/components/BlogCard.astro"
 import MetaPage from "@/components/MetaPage.astro"
 import Layout from "@/layouts/Layout.astro"
+import { getPosts } from "@/lib/content"
+
+const posts = (await getPosts()).slice(0, 3)
 ---
 
 <Layout>
   <MetaPage slot="head" />
-  <h1>Muhammad Zamzam Fauzan</h1>
+  <header>
+    <p class="eyebrow">Junior Penetration Tester</p>
+    <h1>Muhammad Zamzam Fauzan</h1>
+    <prose-content>
+      <p>
+        I test web applications the way an attacker would, then write up what I
+        found so the team can fix it. My bootcamp final assessment of a lab
+        e-commerce app turned up 10 findings, 4 of them Critical, among them SQL
+        injection to full database access and an admin-to-admin takeover. I'm
+        looking for a junior pentester role.
+      </p>
+      <p>
+        <a href="/authors/zamzam">About me</a> ·
+        <a href="mailto:you@example.com">Email</a>
+      </p>
+    </prose-content>
+  </header>
+
+  <section>
+    <h2>Case Studies</h2>
+    {posts.length > 0 ? (
+        <ul>
+          {posts.map((post) => <BlogCard post={post} />)}
+        </ul>
+      ) : (
+        <p>Case studies are being written.</p>
+      )}
+  </section>
 </Layout>
+
+<style>
+  header {
+    margin-block-end: var(--space-l);
+
+    @media (width >= 64rem) {
+      margin-block-start: -0.2em;
+    }
+  }
+
+  .eyebrow {
+    font-family: var(--font-mono);
+    font-size: var(--step--1);
+    color: var(--accent);
+  }
+
+  h1 {
+    font-size: var(--step-2);
+    line-height: calc(var(--leading-offset) + 1em);
+    font-weight: var(--font-weight-medium);
+    margin-block-end: var(--space-xs);
+  }
+
+  section {
+    h2 {
+      margin-block-end: var(--space-s);
+      font-size: var(--step-1);
+      line-height: calc(var(--leading-offset) + 1em);
+      font-weight: var(--font-weight-medium);
+    }
+
+    ul {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-m);
+    }
+
+    > p {
+      color: var(--muted-foreground);
+    }
+  }
+</style>
