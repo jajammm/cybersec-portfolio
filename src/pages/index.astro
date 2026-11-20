@@ -10,7 +10,6 @@ const posts = (await getPosts()).slice(0, 3)
 <Layout>
   <MetaPage slot="head" />
   <header>
-    <p class="eyebrow">Cybersecurity Learner</p>
     <h1>Muhammad Zamzam Fauzan</h1>
     <prose-content>
       <p>
@@ -52,12 +51,6 @@ const posts = (await getPosts()).slice(0, 3)
     @media (width >= 64rem) {
       margin-block-start: -0.2em;
     }
-  }
-
-  .eyebrow {
-    font-family: var(--font-mono);
-    font-size: var(--step--1);
-    color: var(--accent);
   }
 
   h1 {

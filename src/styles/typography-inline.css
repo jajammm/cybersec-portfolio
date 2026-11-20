@@ -1,7 +1,7 @@
 prose-content {
   a {
-    --underline: var(--accent);
-    color: var(--accent);
+    --underline: currentColor;
+    color: var(--foreground);
   }
 
   :is(strong, b) {
