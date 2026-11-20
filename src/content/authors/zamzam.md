@@ -1,5 +1,6 @@
 ---
 name: "Muhammad Zamzam Fauzan"
+pronouns: "he/him"
 avatar: "/static/profile.webp"
 bio: "Cybersecurity Learner"
 mail: "mhmmdzamzamfauzan@gmail.com"
