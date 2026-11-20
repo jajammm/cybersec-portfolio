@@ -1,7 +1,7 @@
 ---
 name: "Muhammad Zamzam Fauzan"
 avatar: "/static/profile.webp"
-bio: "Learning cybersecurity from both sides: completed the offensive phase as a penetration tester at the Dibimbing bootcamp, now moving into blue team as a security analyst."
+bio: "Cybersecurity Learner"
 mail: "mhmmdzamzamfauzan@gmail.com"
 socials:
   github: "https://github.com/jajammm"
