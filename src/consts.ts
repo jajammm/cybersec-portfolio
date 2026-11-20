@@ -18,7 +18,8 @@ export const SITE = {
 
 export const NAVIGATION = [
   { href: "/blog", label: "Case Studies" },
-  { href: "/projects", label: "Projects" },
+  // Re-add when src/content/projects/ has an entry (tool, CTF write-up, etc.):
+  // { href: "/projects", label: "Projects" },
   { href: "/authors/zamzam", label: "About" },
 ]
 
