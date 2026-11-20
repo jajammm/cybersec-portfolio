@@ -9,7 +9,7 @@ import TryHackMe from "@/assets/icons/tryhackme.svg"
 export const SITE = {
   title: "Muhammad Zamzam Fauzan",
   description:
-    "Penetration testing portfolio: web application case studies with recon, exploitation, privilege escalation and remediation.",
+    "Learning cybersecurity: a web application penetration test from the Dibimbing bootcamp offensive phase, now moving into blue team security analysis.",
   locale: "en-US",
   dir: "ltr",
   defaultPageImage: "/static/opengraph-image.png",
